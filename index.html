@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Map Selector</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; }
+    iframe { width: 90%; height: 80vh; border: none; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>Choose a Map</h1>
+<select id="mapSelector">
+  <option value="projections/DESmap_mollweide.html">Map 1</option>
+  <option value="projections/DESmap_stereographic.html">Map 2</option>
+</select>
+
+<iframe id="mapFrame" src="map_1.html"></iframe>
+
+<script>
+  const selector = document.getElementById('mapSelector');
+  const iframe = document.getElementById('mapFrame');
+
+  selector.addEventListener('change', () => {
+    iframe.src = selector.value;
+  });
+</script>
+
+</body>
+</html>
