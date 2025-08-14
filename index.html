@@ -3,10 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Interactive Multi-Resolution DES Y3 Map</title>
+
   <style>
+    body { 
+      font-family: sans-serif; 
+      text-align: center; 
+      margin: 0; 
+      padding: 20px; 
+      background-color: #f5f5f5;
+    }
+    h1 { 
+      font-size: 2em; 
+      margin-bottom: 20px; 
+    }
+    select { 
+      font-size: 1.2em; 
+      padding: 5px 10px; 
+      margin-bottom: 20px; 
+    }
+    iframe { 
+      width: 90%; 
+      height: 80vh; 
+      border: 1px solid #ccc; 
+      margin-top: 10px; 
+    }
+</style>
+
+<!--   <style>
     body { font-family: sans-serif; text-align: center; }
     iframe { width: 90%; height: 80vh; border: none; margin-top: 10px; }
-  </style>
+  </style> -->
 </head>
 <body>
 
@@ -20,7 +46,7 @@
   <option value="projections/DESmap_orthographic.html">Orthographic</option>
 </select>
 
-<iframe id="mapFrame" src="DESmap_mollweide.html"></iframe>
+<iframe id="mapFrame" src="projections/DESmap_mollweide.html"></iframe>
 
 <script>
   const selector = document.getElementById('mapSelector');
