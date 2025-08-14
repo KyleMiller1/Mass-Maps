@@ -13,10 +13,14 @@
 <h1>Select a Projection</h1>
 <select id="mapSelector">
   <option value="projections/DESmap_mollweide.html">Mollweide</option>
-  <option value="projections/DESmap_stereographic.html">Stereographic</option>
+  <option value="projections/DESmap_hammer.html">Hammer</option>
+  <option value="projections/DESmap_gnomonic.html">Gnomonic</option>
+  <option value="projections/DESmap_mercator.html">Mercator</option>
+  <option value="projections/DESmap_albers.html">Albers</option>
+  <option value="projections/DESmap_orthographic.html">Orthographic</option>
 </select>
 
-<iframe id="mapFrame" src="map_1.html"></iframe>
+<iframe id="mapFrame" src="DESmap_mollweide.html"></iframe>
 
 <script>
   const selector = document.getElementById('mapSelector');
