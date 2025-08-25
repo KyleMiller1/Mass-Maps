@@ -16,8 +16,9 @@
         let aladin;
         A.init.then(() => {
             aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5, target: "trifid nebula"});
-        });
-            aladin.addFITS('https://KyleMiller1.github.io/Mass-Maps/KS_full.fits', {name: 'DES Y3' });
+            aladin.displayFITS('http://data.astropy.org/tutorials/FITS-images/HorseHead.fits')
+        }); 
+      
     </script>
 
   </body>
