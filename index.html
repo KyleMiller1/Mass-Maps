@@ -1,69 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Interactive Multi-Resolution DES Y3 Map</title>
-
-  <style>
-    body { 
-      font-family: sans-serif; 
-      text-align: center; 
-      margin: 0; 
-      padding: 20px; 
-      background-color: #f5f5f5;
-    }
-    h1 { 
-      font-size: 2em; 
-      margin-bottom: 20px; 
-    }
-    h2 {
-      font-size: 1.5em;
-      color: #555;  
-      margin-bottom: 10px;
-    }
-    select { 
-      font-size: 1.2em; 
-      padding: 5px 10px; 
-      margin-bottom: 20px; 
-    }
-    iframe { 
-      width: 90%; 
-      height: 80vh; 
-      border: 1px solid #ccc; 
-      margin-top: 10px; 
-    }
-</style>
-
-<!--   <style>
-    body { font-family: sans-serif; text-align: center; }
-    iframe { width: 90%; height: 80vh; border: none; margin-top: 10px; }
-  </style> -->
-</head>
-<body>
-
-<h1>Interactive Multi-Resolution DES Y3 Map</h1>
-<h2>Choose Projection:</h2>
-<select id="mapSelector">
-  <option value="projections/DESmap_mollweide.html">Mollweide</option>
-<!--   <option value="projections/DESmap_hammer.html">Hammer</option>
-  <option value="projections/DESmap_gnomonic.html">Gnomonic</option>
-  <option value="projections/DESmap_mercator.html">Mercator</option>
-  <option value="projections/DESmap_albers.html">Albers</option>
-  <option value="projections/DESmap_orthographic.html">Orthographic</option>
-  <option value="projections/DESmap_stereographic.html">Stereographic</option> -->
-  <option value="projections/test.html">test</option>
-</select>
-
-<iframe id="mapFrame" src="projections/DESmap_mollweide.html"></iframe>
-
-<script>
-  const selector = document.getElementById('mapSelector');
-  const iframe = document.getElementById('mapFrame');
-
-  selector.addEventListener('change', () => {
-    iframe.src = selector.value;
-  });
-</script>
-
-</body>
+  <body>
+    <h1>Trifid interactive map</h1>
+    <!-- our code needs jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+    
+    <!-- Aladin Lite container at requested dimensions -->
+    <div id="aladin-lite-div" style="width:700px;height:400px;"></div>
+    
+    <!-- Aladin Lite JS code -->
+    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+    
+    <!-- Creation of Aladin Lite instance with initial parameters -->
+    <script type="text/javascript">
+        let aladin;
+        A.init.then(() => {
+            aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5, target: "trifid nebula"});
+        });
+    </script>
+  </body>
 </html>
