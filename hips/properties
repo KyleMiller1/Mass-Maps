@@ -1,0 +1,45 @@
+hips_initial_fov     = 58.63230142835039
+hips_initial_ra      = 0
+hips_initial_dec     = +0
+creator_did          = ivo://KyleMiller/P/DES_Y3_map
+#hips_creator        = HiPS creator (institute or person)
+#hips_copyright      = Copyright mention of the HiPS
+obs_title            = KS_full.fits
+#obs_collection      = Dataset collection name
+#obs_description     = Dataset text description
+#obs_ack             = Acknowledgement mention
+#prov_progenitor     = Provenance of the original data (free text)
+#bib_reference       = Bibcode for bibliographic reference
+#bib_reference_url   = URL to bibliographic reference
+#obs_copyright       = Copyright mention of the original data
+#obs_copyright_url   = URL to copyright page of the original data
+#t_min               = Start time in MJD ( =(Unixtime/86400)+40587  or https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl)
+#t_max               = Stop time in MJD
+#obs_regime          = Waveband keyword (Radio Infrared Optical UV X-ray Gamma-ray)
+#em_min              = Start in spectral coordinates in meters ( =2.998E8/freq in Hz, or =1.2398841929E-12*energy in MeV )
+#em_max              = Stop in spectral coordinates in meters
+hips_builder         = Aladin/HipsGen v12.060
+hips_version         = 1.4
+hips_frame           = galactic
+hips_order           = 3
+hips_order_min       = 0
+hips_tile_width      = 128
+#hips_service_url    = ex: http://yourHipsServer/DES_Y3_map
+hips_status          = public master clonableOnce
+hips_tile_format     = png fits
+hips_pixel_bitpix    = -64
+hips_pixel_cut       = -0.004585 0.006881
+hips_data_range      = -0.02338 0.02695
+hips_pixel_scale     = 0.05726
+dataproduct_type     = image
+data_pixel_bitpix    = -64
+hips_sampling        = none
+hips_overlay         = none
+hips_release_date    = 2025-08-26T04:32Z
+moc_sky_fraction     = 1
+hipsgen_date         = 2025-08-26T04:32Z
+hipsgen_params       = in=KS_full.fits out=KS_full_HiPS id=KyleMiller/DES_Y3_map
+hips_creation_date   = 2025-08-26T04:32Z
+hips_estsize         = 164109
+hips_nb_tiles        = 2042
+hips_check_code      = png:1768049685 fits:1035466365
