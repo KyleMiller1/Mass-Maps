@@ -17,34 +17,12 @@
         aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
           
         aladin.setBaseSurvey('P/DSS2/color');
-          
-          let healpixMap = A.healpixTileLayer(
-              'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits',
-              {
-                  // CRITICAL: Tell Aladin this is a HEALPix file
-                  // The 'column' parameter might be needed if your file has multiple data columns.
-                  // For a simple kappa map, it's often the first column, so 'COLUMN_1' or just 1.
-                  column: 'COLUMN_1', 
-                  // You can also try just the index: column: 1
 
-                  // Essential visualization settings for a mass map
-                  name: 'DES Y3 Mass Map (HEALPix)',
-                  colormap: 'plasma',
-                  stretch: 'asinh',
-                  // You MUST find the correct min/max values by experimenting
-                  minMax: [-0.015, 0.03], 
-                  opacity: 0.8
-              }
-          );
+        aladin.addHiPS("My DES Y3 Map", 
+          "https://kylemiller1.github.io/Mass-Maps/hips/", 
+          {imgFormat: "fits"}  // use "fits" if tiles are FITS
+        );
           
-          aladin.addTileLayer(healpixMap);
-
-          // Optional: Print info to console
-          healpixMap.then(layer => {
-              console.log("HEALPix layer loaded successfully", layer);
-          }).catch(error => {
-              console.error("Error loading HEALPix layer:", error);
-          });
         });
     </script>
       
