@@ -1,25 +1,30 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>DES Y3 Multi-Resolution Mass Maps</title>
+    <!-- jQuery HTTPS -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+    <!-- Aladin Lite -->
+    <script src="https://aladin.u-strasbg.fr/AladinLite/api/v3/latest/aladin.js"></script>
+  </head>
   <body>
     <h1>DES Y3 Multi-Resolution Mass Maps</h1>
-    <!-- our code needs jQuery library -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
     
-    <!-- Aladin Lite container at requested dimensions -->
-    <div id="aladin-lite-div" style="width:700px;height:400px;"></div>
+    <!-- Aladin Lite container -->
+    <div id="aladin-lite-div" style="width:800px;height:600px;"></div>
     
-    <!-- Aladin Lite JS code -->
-    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
-    
-    <!-- Creation of Aladin Lite instance with initial parameters -->
-    <script type="text/javascript">
-        let aladin;
-        A.init.then(() => {
-            aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5, target: "trifid nebula"});
-            aladin.displayFITS('KS_full.fits')
-        }); 
-      
-    </script>
+    <script>
+      // Initialize Aladin Lite
+      let aladin = A.aladin('#aladin-lite-div', {
+          survey: "P/DSS2/color",
+          fov: 5,                   // degrees, adjust as needed
+          target: "Trifid Nebula"
+      });
 
+      // Display FITS from GitHub Pages URL
+      aladin.displayFITS('https://KyleMiller1.github.io/Mass-Maps/KS_full.fits', {name: "DES Y3 KS map"});
+    </script>
   </body>
 </html>
+
