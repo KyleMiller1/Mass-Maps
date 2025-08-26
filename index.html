@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>DES Y3 Multi-Resolution Mass Maps</title>
-    <!-- jQuery HTTPS -->
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
-    <!-- Aladin Lite -->
-    <script src="https://aladin.u-strasbg.fr/AladinLite/api/v3/latest/aladin.js"></script>
-  </head>
-  <body>
-    <h1>DES Y3 Multi-Resolution Mass Maps</h1>
-    
-    <!-- Aladin Lite container -->
-    <div id="aladin-lite-div" style="width:800px;height:600px;"></div>
-    
-    <script>
-      // Initialize Aladin Lite
-      let aladin = A.aladin('#aladin-lite-div', {
-          survey: "P/DSS2/color",
-          fov: 5,                   // degrees, adjust as needed
-          target: "Trifid Nebula"
-      });
+<head>
+    <title>DES Y3 Mass Map from GitHub</title>
+    <!-- Load Aladin Lite CSS and JS from CDN -->
+    <link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v2/latest/aladin.min.css" />
+    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
+    <style>
+        #aladin-lite-div {
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
 
-      // Display FITS from GitHub Pages URL
-      aladin.displayFITS('https://KyleMiller1.github.io/Mass-Maps/KS_full.fits', {name: "DES Y3 KS map"});
+    <div id="aladin-lite-div"></div>
+
+    <script>
+        // Initialize Aladin Lite
+        let aladin = A.aladin('#aladin-lite-div', {
+            target: '13h00m00s -30d00m00s', // Example: Center on a part of the DES footprint
+            fov: 20, // Initial field of view in degrees
+            showReticle: false
+        });
+
+        // Load your FITS file directly from GitHub Raw
+        let fitsURL = 'https://github.com/kylemiller1/Mass-Maps/KS_full.fits'; // <-- REPLACE THIS WITH YOUR URL
+
+        // Create an image overlay from the FITS file
+        let fitsOverlay = A.imageOverlay(fitsURL, {
+            // CRITICAL: Set the stretch function and cuts to make the map visible
+            stretch: 'asinh',
+            minMax: [-0.02, 0.05], // You will likely need to adjust these values
+            colormap: 'plasma', // A good colormap choice
+            opacity: 0.8
+        });
+
+        // Add the overlay to Aladin
+        aladin.addOverlay(fitsOverlay);
+
+        // Optional: Add a background survey for context
+        aladin.setBaseSurveyLayer('P/DSS2/color');
     </script>
-  </body>
+</body>
 </html>
 
