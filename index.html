@@ -12,21 +12,21 @@
     
     <!-- Creation of Aladin Lite instance with initial parameters -->
     <script type="text/javascript">
-        var aladin;
         A.init.then(() => {
-        aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
-          
-        // aladin.setBaseSurvey('P/DSS2/color');
+            // YOUR HiPS FOLDER URL - This is the critical part!
+            const yourHiPSUrl = './KS_full_HiPS/';
 
-        aladin.displayFITS(
-        'https://kylemiller1.github.io/Mass-Maps/KS_full.fits', // url of the fits file
-        {}, // no optional params
-        (ra, dec, fov, image) => { // ra, dec and fov are centered around the fits image
-            image.setColormap('magma', {stretch: 'sqrt'});
-
-            aladin.gotoRaDec(ra, dec);
-
-            aladin.setFoV(2 * fov);
+            // Create Aladin instance
+            const aladin = A.aladin('#aladin-lite-div', {
+                survey: yourHiPSUrl,  // This loads YOUR HiPS folder
+                target: '13h00m00s -55d00m00s',  // Center on DES footprint
+                fov: 40,  // Field of view in degrees
+                showReticle: true,
+                showGotoControl: true,
+                showLayersControl: true,
+                showZoomControl: true,
+                showFullscreenControl: true
+            });
 
           
         });
