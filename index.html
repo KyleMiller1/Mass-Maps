@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
   <body>
-    <h1>Trifid interactive map</h1>
+    <h1>DES Y3 Mass Map</h1>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
 
     <!-- Aladin Lite container at requested dimensions -->
@@ -17,20 +17,27 @@
         aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
 
         aladin.displayFITS(
-            'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits', // url of the fits file
-            {}, // no optional params
-            (ra, dec, fov, image) => { // ra, dec and fov are centered around the fits image
-            image.setColormap('magma', {stretch: 'sqrt'});
+                'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits',
+                { // Optional params for the image
+                    name: 'DES Mass Map', // Name it in the layer stack
+                    opacity: 1
+                },
+                (ra, dec, fov, image) => {
+                    // THIS IS THE KEY: Set the colormap and a strong stretch
+                    image.setColormap('plasma', {
+                        stretch: 'asinh', // Use 'asinh' for mass maps!
+                        minMax: [-0.015, 0.03] // YOU MUST MANUALLY ADJUST THESE
+                    });
 
-        aladin.gotoRaDec(ra, dec);
+                    // Center the view on the map
+                    aladin.gotoRaDec(ra, dec);
+                    aladin.setFoV(fov * 1.2);
 
-        aladin.setFoV(2 * fov);
-
-        }
-
-    );
-
-});
+                }
+        
+            );
+        
+        });
     </script>
       
   </body>
