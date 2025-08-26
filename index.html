@@ -1,47 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-<head>
-    <title>DES Y3 Mass Map from GitHub</title>
-    <!-- Load Aladin Lite CSS and JS from CDN -->
-    <link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v2/latest/aladin.min.css" />
-    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
-    <style>
-        #aladin-lite-div {
-            width: 100%;
-            height: 600px;
+  <body>
+    <h1>Trifid interactive map</h1>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+
+    <!-- Aladin Lite container at requested dimensions -->
+    <div id="aladin-lite-div" style="width:700px;height:400px;"></div>
+    
+    <!-- Aladin Lite JS code -->
+    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+    
+    <!-- Creation of Aladin Lite instance with initial parameters -->
+    <script type="text/javascript">
+        var aladin;
+        A.init.then(() => {
+        aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
+
+        aladin.displayFITS(
+            'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits', // url of the fits file
+            {}, // no optional params
+            (ra, dec, fov, image) => { // ra, dec and fov are centered around the fits image
+            image.setColormap('magma', {stretch: 'sqrt'});
+
+        aladin.gotoRaDec(ra, dec);
+
+        aladin.setFoV(2 * fov);
+
         }
-    </style>
-</head>
-<body>
 
-    <div id="aladin-lite-div"></div>
+    );
 
-    <script>
-        // Initialize Aladin Lite
-        let aladin = A.aladin('#aladin-lite-div', {
-            target: '13h00m00s -30d00m00s', // Example: Center on a part of the DES footprint
-            fov: 20, // Initial field of view in degrees
-            showReticle: false
-        });
-
-        // Load your FITS file directly from GitHub Raw
-        let fitsURL = 'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits'; // <-- REPLACE THIS WITH YOUR URL
-
-        // Create an image overlay from the FITS file
-        let fitsOverlay = A.imageOverlay(fitsURL, {
-            // CRITICAL: Set the stretch function and cuts to make the map visible
-            stretch: 'asinh',
-            minMax: [-0.02, 0.05], // You will likely need to adjust these values
-            colormap: 'plasma', // A good colormap choice
-            opacity: 0.8
-        });
-
-        // Add the overlay to Aladin
-        aladin.addOverlay(fitsOverlay);
-
-        // Optional: Add a background survey for context
-        aladin.setBaseSurveyLayer('P/DSS2/color');
+});
     </script>
-</body>
+      
+  </body>
 </html>
-
