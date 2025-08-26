@@ -16,12 +16,18 @@
         A.init.then(() => {
         aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
           
-        aladin.setBaseSurvey('P/DSS2/color');
+        // aladin.setBaseSurvey('P/DSS2/color');
 
-        aladin.addHiPS("My DES Y3 Map", 
-          "https://kylemiller1.github.io/Mass-Maps/hips/", 
-          {imgFormat: "fits"}  // use "fits" if tiles are FITS
-        );
+        aladin.displayFITS(
+        'https://kylemiller1.github.io/Mass-Maps/KS_full.fits', // url of the fits file
+        {}, // no optional params
+        (ra, dec, fov, image) => { // ra, dec and fov are centered around the fits image
+            image.setColormap('magma', {stretch: 'sqrt'});
+
+            aladin.gotoRaDec(ra, dec);
+
+            aladin.setFoV(2 * fov);
+
           
         });
     </script>
