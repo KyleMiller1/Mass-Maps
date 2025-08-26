@@ -36,7 +36,15 @@
                   opacity: 0.8
               }
           );
-        
+          
+          aladin.addTileLayer(healpixMap);
+
+          // Optional: Print info to console
+          healpixMap.then(layer => {
+              console.log("HEALPix layer loaded successfully", layer);
+          }).catch(error => {
+              console.error("Error loading HEALPix layer:", error);
+          });
         });
     </script>
       
