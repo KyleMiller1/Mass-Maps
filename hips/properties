@@ -20,7 +20,7 @@ obs_title            = KS_full.fits
 #em_max              = Stop in spectral coordinates in meters
 hips_builder         = Aladin/HipsGen v12.060
 hips_version         = 1.4
-hips_frame           = galactic
+hips_frame           = icrs
 hips_order           = 3
 hips_order_min       = 0
 hips_tile_width      = 128
@@ -43,4 +43,5 @@ hips_creation_date   = 2025-08-26T04:32Z
 hips_estsize         = 164109
 hips_nb_tiles        = 2042
 hips_check_code      = fits:1035466365 png:1768049685
+
 
