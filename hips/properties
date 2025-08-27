@@ -26,7 +26,7 @@ hips_order_min       = 0
 hips_tile_width      = 128
 #hips_service_url    = ex: http://yourHipsServer/DES_Y3_map
 hips_status          = public master clonableOnce
-hips_tile_format     = png fits
+hips_tile_format     = fits png
 hips_pixel_bitpix    = -64
 hips_pixel_cut       = -0.004585 0.006881
 hips_data_range      = -0.02338 0.02695
@@ -42,4 +42,5 @@ hipsgen_params       = in=KS_full.fits out=KS_full_HiPS id=KyleMiller/DES_Y3_map
 hips_creation_date   = 2025-08-26T04:32Z
 hips_estsize         = 164109
 hips_nb_tiles        = 2042
-hips_check_code      = png:1768049685 fits:1035466365
+hips_check_code      = fits:1035466365 png:1768049685
+
