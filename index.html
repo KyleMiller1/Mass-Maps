@@ -52,7 +52,7 @@
                           LONPOLE: 180.0, // [deg] Native longitude of celestial pole       
                           LATPOLE: 0, // [deg] Native latitude of celestial pole        
                           MJDREF: 0.0, // [d] MJD of fiducial time                       
-                          RADESYS: 'ICRS' // Equatorial coordinate system  
+                          RADESYS: 'GALACTIC' // Equatorial coordinate system  
                       },
                       successCallback: (ra, dec, fov, image) => {
                           aladin.gotoRaDec(ra, dec);
