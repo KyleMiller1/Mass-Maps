@@ -28,8 +28,10 @@
             });
           
             aladin.setProjection("MOL");
+
+            aladin.displayFITS("https://kylemiller1.github.io/Mass-Maps/Patches/patch_64_wcs.fits");
           
-            aladin.setOverlayImageLayer(A.fits("https://kylemiller1.github.io/Mass-Maps/Patches/patch_64_wcs.fits", {name: "patch_64"})
+            // aladin.setOverlayImageLayer(
               // A.image(
               //     "https://kylemiller1.github.io/Mass-Maps/Patches/patch_64.jpg",
               //     {
@@ -58,7 +60,7 @@
               //         }
               //     }
               // )
-            );
+            // );
         });
     </script>
       
