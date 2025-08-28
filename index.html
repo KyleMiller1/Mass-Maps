@@ -12,41 +12,58 @@
     
     <!-- Creation of Aladin Lite instance with initial parameters -->
     <script type="text/javascript">
-        var aladin;
         A.init.then(() => {
-        aladin = A.aladin('#aladin-lite-div', {cooFrame: 'icrs'});
-          
-        aladin.setBaseSurvey('P/DSS2/color');
-          
-          let healpixMap = A.healpixTileLayer(
-              'https://github.com/KyleMiller1/Mass-Maps/raw/refs/heads/main/KS_full.fits',
-              {
-                  // CRITICAL: Tell Aladin this is a HEALPix file
-                  // The 'column' parameter might be needed if your file has multiple data columns.
-                  // For a simple kappa map, it's often the first column, so 'COLUMN_1' or just 1.
-                  column: 'COLUMN_1', 
-                  // You can also try just the index: column: 1
+            const yourHiPSUrl = 'https://kylemiller1.github.io/Mass-Maps/hips/';
 
-                  // Essential visualization settings for a mass map
-                  name: 'DES Y3 Mass Map (HEALPix)',
-                  colormap: 'plasma',
-                  stretch: 'asinh',
-                  // You MUST find the correct min/max values by experimenting
-                  minMax: [-0.015, 0.03], 
-                  opacity: 0.8
-              }
-          );
+            // Create Aladin instance
+            let aladin = A.aladin('#aladin-lite-div', {
+                survey: yourHiPSUrl,  // This loads YOUR HiPS folder
+                target: '13h00m00s -55d00m00s',  // Center on DES footprint
+                fov: 40,  // Field of view in degrees
+                showReticle: true,
+                showGotoControl: true,
+                showLayersControl: true,
+                showZoomControl: true,
+                showFullscreenControl: true
+            });
           
-          aladin.addTileLayer(healpixMap);
+            aladin.setProjection("MOL");
 
-          // Optional: Print info to console
-          healpixMap.then(layer => {
-              console.log("HEALPix layer loaded successfully", layer);
-          }).catch(error => {
-              console.error("Error loading HEALPix layer:", error);
-          });
+            // aladin.displayFITS("https://kylemiller1.github.io/Mass-Maps/Patches/patch_64_wcs.fits", {cutouts: true});
+          
+            aladin.setOverlayImageLayer(
+              A.image(
+                  "https://kylemiller1.github.io/Mass-Maps/Patches/patch_64_lowmax.jpg",
+                  {
+                      name: "patch_64",
+                      imgFormat: 'jpeg',
+                      wcs: {
+                          WCSAXES: 2, // Number of coordinate axes                      
+                          CRPIX1: 128.0, // Pixel coordinate of reference point            
+                          CRPIX2: 128.0, // Pixel coordinate of reference point            
+                          CDELT1: 0.027892515868654, // [deg] Coordinate increment at reference point  
+                          CDELT2: 0.016666666666667, // [deg] Coordinate increment at reference point  
+                          CUNIT1: 'deg', // Units of coordinate increment and value        
+                          CUNIT2: 'deg', // Units of coordinate increment and value        
+                          CTYPE1: 'RA---TAN', // Right ascension, gnomonic projection           
+                          CTYPE2: 'DEC--TAN', // Declination, gnomonic projection               
+                          CRVAL1: 343.51376271573, // [deg] Coordinate value at reference point      
+                          CRVAL2: -53.306666666667, // [deg] Coordinate value at reference point      
+                          LONPOLE: 180.0, // [deg] Native longitude of celestial pole       
+                          LATPOLE: 0, // [deg] Native latitude of celestial pole        
+                          MJDREF: 0.0, // [d] MJD of fiducial time                       
+                          RADESYS: 'ICRS' // Equatorial coordinate system  
+                      },
+                      successCallback: (ra, dec, fov, image) => {
+                          aladin.gotoRaDec(ra, dec);
+                          aladin.setFoV(fov);
+                      }
+                  }
+              )
+            );
         });
     </script>
       
   </body>
 </html>
+
