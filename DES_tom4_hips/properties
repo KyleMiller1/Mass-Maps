@@ -20,7 +20,7 @@ obs_title            = DES_tom4
 #em_max              = Stop in spectral coordinates in meters
 hips_builder         = Aladin/HipsGen v12.135
 hips_version         = 1.4
-hips_frame           = galactic
+hips_frame           = icrs
 hips_order           = 3
 hips_order_min       = 0
 hips_tile_width      = 128
@@ -41,3 +41,4 @@ moc_sky_fraction     = 1
 hips_estsize         = 169511
 hips_nb_tiles        = 2042
 hips_check_code      = png:1301338016 fits:1035466365
+
