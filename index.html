@@ -17,7 +17,7 @@
             const yourHiPSUrl = 'https://kylemiller1.github.io/Mass-Maps/hips/';
 
             // Create Aladin instance
-            const aladin = A.aladin('#aladin-lite-div', {
+            let aladin = A.aladin('#aladin-lite-div', {
                 survey: yourHiPSUrl,  // This loads YOUR HiPS folder
                 target: '13h00m00s -55d00m00s',  // Center on DES footprint
                 fov: 40,  // Field of view in degrees
@@ -26,7 +26,23 @@
                 showLayersControl: true,
                 showZoomControl: true,
                 showFullscreenControl: true
+
             });
+          
+            aladin.setOverlayImageLayer(
+                A.image(
+                  "https://kylemiller1.github.io/Mass-Maps/Patches/patch_64.jpg",
+                  {
+                      name: "patch_64",
+                      imgFormat: 'jpeg',
+                      ra: [339.94352068, 347.08400475],   // minRA, maxRA
+                      dec: [-55.44, -51.17333333],
+                      successCallback: (ra, dec, fov, image) => {
+                          aladin.gotoRaDec(ra, dec);
+                          aladin.setFoV(fov)
+                      }
+                  },
+              ));
 
           
         });
