@@ -18,7 +18,7 @@
             // Create Aladin instance
             let aladin = A.aladin('#aladin-lite-div', {
                 survey: yourHiPSUrl,  // This loads YOUR HiPS folder
-                name: 'DES Wiener Tomographic Bin 4 Mass Map'
+                name: 'DES Wiener Tomographic Bin 4 Mass Map',
                 target: '13h00m00s -55d00m00s',  // Center on DES footprint
                 fov: 40,  // Field of view in degrees
                 showReticle: true,
@@ -82,7 +82,7 @@
                       },
                       successCallback: (ra, dec, fov, image) => {
                           aladin.gotoRaDec(ra, dec);
-                          aladin.setFoV(fov);
+                          aladin.setFoV(fov*1.5);
                       }
                   }
               )
