@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
   <body>
-    <h1>DES Y3 Mass Map</h1>
+    <h1>DES Y3 Multi-Resolution Mass Map</h1>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
 
     <!-- Aladin Lite container at requested dimensions -->
@@ -18,6 +18,7 @@
             // Create Aladin instance
             let aladin = A.aladin('#aladin-lite-div', {
                 survey: yourHiPSUrl,  // This loads YOUR HiPS folder
+                name: 'DES Wiener Tomographic Bin 4 Mass Map'
                 target: '13h00m00s -55d00m00s',  // Center on DES footprint
                 fov: 40,  // Field of view in degrees
                 showReticle: true,
@@ -81,7 +82,7 @@
                       },
                       successCallback: (ra, dec, fov, image) => {
                           aladin.gotoRaDec(ra, dec);
-                          aladin.setFoV(fov);
+                          aladin.setFoV(fov*1.4);
                       }
                   }
               )
