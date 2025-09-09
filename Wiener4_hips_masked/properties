@@ -41,10 +41,12 @@ moc_sky_fraction     = 1
 hipsgen_date         = 2025-09-09T20:09Z
 hipsgen_params       = id=MaskedWiener in=wiener_tomo4_copy.fits out=Wiener_hips_masked
 hips_creation_date   = 2025-09-09T20:09Z
+hips_data_minmax     = -0.01454 0.01647
 hips_estsize         = 163581
 hips_nb_tiles        = 2042
 #hips_check_code      = fits:1035466365 png:4172000443
 hips_check_code      = fits:1035466365 
+
 
 
 
