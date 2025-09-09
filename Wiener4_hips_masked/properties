@@ -26,7 +26,8 @@ hips_order_min       = 0
 hips_tile_width      = 128
 #hips_service_url    = ex: http://yourHipsServer/MaskedWiener
 hips_status          = public master clonableOnce
-hips_tile_format     = fits png
+#hips_tile_format     = fits png
+hips_tile_format     = fits
 hips_pixel_bitpix    = -64
 hips_pixel_cut       = -0.005904 0.008338
 hips_data_range      = -0.02619 0.02744
@@ -42,6 +43,8 @@ hipsgen_params       = id=MaskedWiener in=wiener_tomo4_copy.fits out=Wiener_hips
 hips_creation_date   = 2025-09-09T20:09Z
 hips_estsize         = 163581
 hips_nb_tiles        = 2042
-hips_check_code      = fits:1035466365 png:4172000443
+#hips_check_code      = fits:1035466365 png:4172000443
+hips_check_code      = fits:1035466365 
+
 
 
