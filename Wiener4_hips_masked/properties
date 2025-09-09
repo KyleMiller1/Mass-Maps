@@ -1,3 +1,4 @@
+hips_id              = Wiener4_masked
 hips_initial_fov     = 58.63230142835039
 hips_initial_ra      = 0
 hips_initial_dec     = +0
@@ -46,6 +47,7 @@ hips_estsize         = 163581
 hips_nb_tiles        = 2042
 #hips_check_code      = fits:1035466365 png:4172000443
 hips_check_code      = fits:1035466365 
+
 
 
 
