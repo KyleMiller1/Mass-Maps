@@ -20,7 +20,7 @@ obs_title            = wiener_tomo4_copy.fits
 #em_max              = Stop in spectral coordinates in meters
 hips_builder         = Aladin/HipsGen v12.060
 hips_version         = 1.4
-hips_frame           = galactic
+hips_frame           = icrs
 hips_order           = 3
 hips_order_min       = 0
 hips_tile_width      = 128
@@ -43,3 +43,4 @@ hips_creation_date   = 2025-09-09T20:09Z
 hips_estsize         = 163581
 hips_nb_tiles        = 2042
 hips_check_code      = png:4172000443 fits:1035466365
+
