@@ -4,23 +4,19 @@
     <h1>DES Y3 Multi-Resolution Mass Map</h1>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
 
-    <!-- Aladin Lite container at requested dimensions -->
     <div id="aladin-lite-div" style="width:700px;height:400px;"></div>
     
-    <!-- Aladin Lite JS code -->
     <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
     
-    <!-- Creation of Aladin Lite instance with initial parameters -->
     <script type="text/javascript">
         A.init.then(() => {
             const myHiPS = 'https://kylemiller1.github.io/Mass-Maps/Wiener4_hips_masked/';
 
-            // Create Aladin instance
             let aladin = A.aladin('#aladin-lite-div', {
-                survey: myHiPS,  // This loads YOUR HiPS folder
+                survey: 'P/2MASS/color',  
                 name: 'DES Wiener Tomographic Bin 4 Mass Map',
-                target: '13h00m00s -55d00m00s',  // Center on DES footprint
-                fov: 40,  // Field of view in degrees
+                target: '13h00m00s -55d00m00s',  
+                fov: 40,  
                 showReticle: true,
                 showGotoControl: true,
                 showLayersControl: true,
@@ -30,6 +26,8 @@
             });
           
             aladin.setProjection("MOL");
+      
+			aladin.setOverlayImageLayer(aladin.newImageSurvey(myHiPS, {opacity: 0.99}), 'layer')
           
             aladin.setOverlayImageLayer(
               A.image(
@@ -57,27 +55,6 @@
                           NAXIS2: 256,
                           EQUINOX: 2000.0
 
-                          // WCSAXES: 2, // Number of coordinate axes                      
-                          // CRPIX1: 129.50792469505, // Pixel coordinate of reference point            
-                          // CRPIX2: 135.88224164189, // Pixel coordinate of reference point            
-                          // CD1_1: -4.1753387096523E-05, // Coordinate transformation matrix element       
-                          // CD1_2: -0.016732951389008, // Coordinate transformation matrix element       
-                          // CD2_1: -0.016730335251698, // Coordinate transformation matrix element       
-                          // CD2_2: 4.1876265612154E-05, // Coordinate transformation matrix element       
-                          // // CDELT1: 1.0, // [deg] Coordinate increment at reference point  
-                          // // CDELT2: 1.0, // [deg] Coordinate increment at reference point  
-                          // CUNIT1: 'deg', // Units of coordinate increment and value        
-                          // CUNIT2: 'deg', // Units of coordinate increment and value        
-                          // CTYPE1: 'RA---TAN', // Right ascension, gnomonic projection           
-                          // CTYPE2: 'DEC--TAN', // Declination, gnomonic projection               
-                          // CRVAL1: 343.33506246351, // [deg] Coordinate value at reference point      
-                          // CRVAL2: -53.359848864385, // [deg] Coordinate value at reference point      
-                          // LONPOLE: 80.0,// [deg] Native longitude of celestial pole       
-                          // LATPOLE: -53.359848864385, // [deg] Native latitude of celestial pole        
-                          // MJDREF: 0.0, // [d] MJD of fiducial time  
-                          // NAXIS1: 256,
-                          // NAXIS2: 256,
-                          // RADESYS: 'ICRS'               // Equatorial coordinate system  
                       },
                       successCallback: (ra, dec, fov, image) => {
                           aladin.gotoRaDec(ra, dec);
