@@ -28,20 +28,10 @@
                 showFullscreenControl: true,
                 opacity: 0.98
             });
-
-            let twomassLayer = aladin.createImageSurvey(
-                "2MASS Color", 
-                "2MASS Color Survey", 
-                "https://aladin.cds.unistra.fr/pub/2MASS/JHK/Color", 
-                {imgFormat: 'jpg', position: 'base'}
-            );
-            
-            // Add the layer to the bottom of the stack
-            aladin.addSurvey(twomassLayer);
           
             aladin.setProjection("MOL");
 
-            // aladin.displayFITS("https://kylemiller1.github.io/Mass-Maps/Patches/patch_64_wcs.fits", {cutouts: true});
+            aladin.setBaseImageLayer('https://irsa.ipac.caltech.edu/data/hips/CDS/2MASS/Color/')
           
             aladin.setOverlayImageLayer(
               A.image(
